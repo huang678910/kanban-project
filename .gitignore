@@ -1,0 +1,35 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+
+# Node / Frontend
+node_modules/
+dist/
+.vite/
+*.local
+
+# Uploaded files
+uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs / Temp
+logs/
+*.log
+tmp/
+temp/
