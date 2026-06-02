@@ -148,3 +148,11 @@ CREATE TABLE activity_log (
     CONSTRAINT fk_activity_board FOREIGN KEY (board_id) REFERENCES board(id) ON DELETE CASCADE,
     CONSTRAINT fk_activity_user  FOREIGN KEY (user_id)  REFERENCES user(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ============================================================
+-- Schema upgrades (for Docker: tables created without status/priority)
+-- ============================================================
+ALTER TABLE board ADD COLUMN status VARCHAR(20) NOT NULL DEFAULT 'TODO';
+ALTER TABLE board_list ADD COLUMN status VARCHAR(20) NOT NULL DEFAULT 'TODO';
+ALTER TABLE board_list ADD COLUMN priority VARCHAR(10) NOT NULL DEFAULT 'MEDIUM';
+ALTER TABLE card ADD COLUMN status VARCHAR(20) NOT NULL DEFAULT 'TODO';

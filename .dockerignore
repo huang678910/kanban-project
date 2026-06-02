@@ -1,0 +1,12 @@
+**/node_modules
+**/target
+**/.vite
+**/dist
+**/uploads
+**/.git
+**/.idea
+**/.vscode
+**/*.log
+**/tmp
+**/.DS_Store
+README.md

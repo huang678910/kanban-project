@@ -54,23 +54,3 @@ async function handleLogin() {
 }
 </script>
 
-<style scoped>
-.auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-.auth-card {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  width: 400px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-}
-.auth-card h1 { text-align: center; font-size: 22px; margin-bottom: 4px; }
-.auth-card h2 { text-align: center; font-size: 16px; color: #909399; margin-bottom: 24px; font-weight: 400; }
-.auth-link { text-align: center; color: #909399; font-size: 14px; }
-.auth-link a { color: #409eff; text-decoration: none; }
-</style>

@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # ============================================================
+  # MySQL Database
+  # ============================================================
+  mysql:
+    image: mysql:8.0
+    container_name: kanban-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 134p159357
+      MYSQL_DATABASE: kanban_db
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================================================
+  # Spring Boot Backend
+  # ============================================================
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: kanban-backend
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SERVER_PORT: 8080
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/kanban_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 134p159357
+      JWT_SECRET: YTk3ZDg2ZjFiMjM0NTY3ODkwYWJjZGVmMDEyMzQ1Njc4OTBhYmNkZWYwMTIzNDU2Nzg5MGFiY2RlZjAxMjM0NTY3ODkwYWJjZA==
+      JWT_EXPIRATION: 86400000
+      FILE_UPLOAD_PATH: /app/uploads/
+    ports:
+      - "9091:8080"
+    volumes:
+      - upload-data:/app/uploads
+
+  # ============================================================
+  # Nginx Frontend + Reverse Proxy
+  # ============================================================
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: kanban-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  mysql-data:
+  upload-data:

@@ -321,31 +321,24 @@ function formatDate(dateStr) {
 </script>
 
 <style scoped>
-.board-page { height: 100vh; display: flex; flex-direction: column; background: #1a1a2e; }
-.board-page .app-header { background: #16213e; border-color: #0f3460; }
-.board-page .app-header .logo,
-.board-page .app-header span { color: #e0e0e0; }
-.board-page .app-header .el-button { color: #c0d0ff; }
-.board-page .app-header .el-button:hover { color: #ffffff; background: rgba(255,255,255,0.1); }
-.board-name { font-weight: 600; margin-left: 8px; }
+.board-page { height: 100vh; display: flex; flex-direction: column; background: #f0f2f5; }
+.board-name { font-weight: 600; margin-left: 8px; font-size: 16px; }
 .header-left { display: flex; align-items: center; }
-.board-lists { background: #1a1a2e; }
-.list-column { background: #16213e; }
-.list-header { padding: 4px 8px 8px; }
+.list-header { padding: 4px 4px 8px; }
 .list-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-.list-title { font-weight: 600; font-size: 14px; color: #e0e0e0; cursor: pointer; }
-.list-cards { flex: 1; overflow-y: auto; min-height: 20px; padding: 4px 0; }
-.card-item { background: #0f3460; color: #e0e0e0; }
-.card-item:hover { background: #1a4a8a; }
-.card-title { font-size: 14px; }
-.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 12px; color: #a0a0a0; }
+.list-title { font-weight: 600; font-size: 14px; color: #303133; cursor: pointer; }
+.card-title { font-size: 14px; color: #303133; }
+.card-footer { display: flex; justify-content: flex-start; align-items: center; gap: 6px; margin-top: 6px; font-size: 12px; color: #909399; }
 .card-labels { display: flex; gap: 4px; margin-bottom: 4px; flex-wrap: wrap; }
 .card-label-tag { font-size: 10px; padding: 0 6px; border-radius: 2px; color: white; }
+.card-status-badge { font-size: 11px; padding: 1px 6px; border-radius: 3px; background: #f0f0f0; }
+.status-todo { background: #f0f0f0; color: #909399; }
+.status-in_progress { background: #e6f7ff; color: #1890ff; }
+.status-done { background: #f6ffed; color: #52c41a; }
+.status-closed { background: #fff2f0; color: #ff4d4f; }
 .list-footer { padding: 4px 0; }
 .form-actions { display: flex; gap: 4px; margin-top: 6px; }
 .card-create-form { padding: 4px 0; }
 .list-create { flex-shrink: 0; }
-.list-create-form { background: #16213e; padding: 8px; border-radius: 8px; }
-.card-ghost { opacity: 0.4; background: #533483 !important; }
-.list-column .el-button { color: #a0a0a0; }
+.list-create-form { background: #ebecf0; padding: 8px; border-radius: 8px; }
 </style>
